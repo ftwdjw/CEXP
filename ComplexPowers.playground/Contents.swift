@@ -57,6 +57,8 @@ func SIGN (a:Double, b:Double)-> Double {
     
 }
 
+
+
 func + (c1: Complex, c2: Complex) -> Complex {
     return Complex(r: c1.r + c2.r, j: c1.j + c2.j)
 }
@@ -86,51 +88,52 @@ func * (c1: Complex, c2: Complex) -> Complex {
     out.j=c1.r*c2.j+c1.j*c2.r
     return out }
 
-func ^ (c1: Complex, c2: Int) -> Complex {
+func ^ (c1: Complex, n: Int) -> Complex {
     var out = Complex(r:0.0, j:0.0)
-    var save = Complex(r:0.0,j:0.0)
-    
-        
-        if c2==0{
-            out.r=1.0
-            out.j=0.0
-        }
-        else if c2==1{
-            out.r=c1.r
-            out.j=c1.j
-        }
-            
-        else if c2==2{
-    
-    out.r=c1.r*c1.r-c1.j*c1.j
-    out.j=c1.r*c1.j+c1.j*c1.r
-    }
+  
     
     
-    
-    
-    else if c2>=3{
-            
-            save.r=c1.r*c1.r-c1.j*c1.j
-            save.j=c1.r*c1.j+c1.j*c1.r
-            
-        for _ in (0..<c2-2){
-            
-            out.r=save.r*save.r-save.j*save.j
-            out.j=save.r*save.j+save.j*save.r
+    switch (n)
+    {
         
         
+    case 0:
+        out.r=1.0
+        out.j=0.0
+        
+        print("(a+bi)^0 is 1")
+        
+    case 1:
+        
+        out.r=c1.r
+        out.j=c1.j
+        
+        print("(a+bi)^1 is (a+bi)")
+        
+
+        
+    case 2..<100:
+        
+        out=c1
+        
+        for _ in (1..<n){
             
-            
+            out=c1*out
+            //print("\(n)")
             
         }
         
-        out.r=save.r
-        out.j=save.j
+        
+        print("n>=2")
         
         
+    default:
+        print("Integer out of range")
     }
 
+    
+        
+    
     
     return out }
 
@@ -168,7 +171,7 @@ public func max1 (a: [Double]) -> Double {
 
 var i=Complex(r: 0.0,j: 1.0)
 
-for n in (0..<4){
+for n in (0..<10){
 
 let x=i^n
     
