@@ -124,16 +124,10 @@ func ^ (c1: Complex, n: Int) -> Complex {
         }
         
         
-        print("n>=2")
-        
-        
     default:
         print("Integer out of range")
     }
 
-    
-        
-    
     
     return out }
 
@@ -169,9 +163,9 @@ public func max1 (a: [Double]) -> Double {
     return result
 }
 
-var i=Complex(r: 0.0,j: 1.0)
+var i=Complex(r: 1.0 ,j: 1.0)
 
-for n in (0..<10){
+for n in (0...39){
 
 let x=i^n
     
